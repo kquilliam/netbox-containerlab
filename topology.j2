@@ -1,0 +1,21 @@
+name: {{ topology_name }}
+
+mgmt:
+  network: {{ topology_name }}
+  ipv4-subnet: 172.99.0.0/24
+
+topology:
+  kinds:
+    ceos:
+      image: ceos:4.34.2.1F
+      binds:
+        - "nodes/sn/__clabNodeName__.txt:/mnt/flash/ceos-config:ro"
+      startup-config: "nodes/configs/__clabNodeName__.cfg"
+  nodes:
+  {%- for device in devices %}
+    {{ device.name }}:
+      kind: ceos
+  {% endfor %}
+  links:
+  {%- for link in links %}
+    - endpoints: ["{{ link.endpoints[0] }}", "{{ link.endpoints[1] }}"]{% endfor %}

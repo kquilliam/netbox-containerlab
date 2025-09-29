@@ -1,0 +1,26 @@
+######################## CLAB Topology File Example #######################
+# This file is an example of a CLAB topology file that is being generated #
+# It was generated via 'python clab_generator.py --site test-site'#################### 
+name: test-site
+
+mgmt:
+  network: test-site
+  ipv4-subnet: 172.99.0.0/24
+
+topology:
+  kinds:
+    ceos:
+      image: ceos:4.34.2.1F
+      binds:
+        - "nodes/sn/__clabNodeName__.txt:/mnt/flash/ceos-config:ro"
+      startup-config: "nodes/configs/__clabNodeName__.cfg"
+  nodes:
+    lf01.test-site:
+      kind: ceos
+  
+    sp01.test-site:
+      kind: ceos
+  
+  links:
+    - endpoints: ["lf01.test-site:eth49", "sp01.test-site:eth45"]
+    - endpoints: ["lf01.test-site:eth50", "sp01.test-site:eth46"]
