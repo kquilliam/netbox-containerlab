@@ -1,0 +1,6 @@
+pynetbox
+requests
+urllib3
+napalm
+Jinja2
+PyYAML
