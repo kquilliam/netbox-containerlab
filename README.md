@@ -84,7 +84,7 @@ The script will then perform all workflow steps, including the final containerla
 To speed things up, you can skip the initial connectivity test. The script will discover unreachable devices during the data gathering stages instead.
 
 ```
-sudo python clab_generator.py --site "your-site-name" --skip-connectivity-test
+python clab_generator.py --site "your-site-name" --skip-connectivity-test
 ```
 
 ## Cleaning Up the Lab 🧹
